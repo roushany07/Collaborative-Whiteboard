@@ -1,16 +1,16 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import passport from 'passport';
 import authRoutes from './routes/authRoutes.js';
 import roomRoutes from './routes/roomRoutes.js';
 import { setupSocketHandlers } from './socket/socketHandlers.js';
 import configurePassport from './config/passport.js';
-
-dotenv.config();
 
 // Initialize Passport
 configurePassport();
@@ -47,9 +47,17 @@ app.get('/', (req, res) => {
 });
 
 // MongoDB connection
+console.log('🔍 MONGODB_URI is:', process.env.MONGODB_URI);
+console.log('🔍 GOOGLE_CLIENT_ID is:', process.env.GOOGLE_CLIENT_ID);
+
+if (!process.env.MONGODB_URI) {
+  console.error('❌ MONGODB_URI is not defined in environment variables!');
+  process.exit(1);
+}
+
 mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.error('MongoDB error:', err));
+  .then(() => console.log('✅ MongoDB connected'))
+  .catch((err) => console.error('❌ MongoDB error:', err));
 
 const PORT = process.env.PORT || 5000;
 
