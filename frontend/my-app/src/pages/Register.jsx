@@ -78,7 +78,7 @@ export default function Register() {
               value={formData.name}
               onChange={handleChange}
               placeholder="Full Name"
-              className="w-full px-3 py-2 border-2 border-gray-300 rounded-md"
+              className="w-full px-3 py-2 border-2 border-gray-300 rounded-md bg-white text-gray-900"
             />
 
             <input
@@ -88,7 +88,7 @@ export default function Register() {
               value={formData.email}
               onChange={handleChange}
               placeholder="Email address"
-              className="w-full px-3 py-2 border-2 border-gray-300 rounded-md"
+              className="w-full px-3 py-2 border-2 border-gray-300 rounded-md bg-white text-gray-900"
             />
 
             <input
@@ -98,7 +98,7 @@ export default function Register() {
               value={formData.password}
               onChange={handleChange}
               placeholder="Password"
-              className="w-full px-3 py-2 border-2 border-gray-300 rounded-md"
+              className="w-full px-3 py-2 border-2 border-gray-300 rounded-md bg-white text-gray-900"
             />
 
             <input
@@ -108,7 +108,7 @@ export default function Register() {
               value={formData.confirmPassword}
               onChange={handleChange}
               placeholder="Confirm Password"
-              className="w-full px-3 py-2 border-2 border-gray-300 rounded-md"
+              className="w-full px-3 py-2 border-2 border-gray-300 rounded-md bg-white text-gray-900"
             />
           </div>
 

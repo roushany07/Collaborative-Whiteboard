@@ -19,15 +19,20 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin: ['http://localhost:5173', process.env.CLIENT_URL].filter(Boolean),
     methods: ['GET', 'POST'],
     credentials: true
   }
 });
 
 // Middleware
+const allowedOrigins = [
+  'http://localhost:5173',
+  process.env.CLIENT_URL
+].filter(Boolean);
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: allowedOrigins,
   credentials: true
 }));
 app.use(express.json({ limit: '50mb' }));
