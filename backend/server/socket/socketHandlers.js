@@ -106,18 +106,6 @@ export const setupSocketHandlers = (io) => {
       socket.to(roomId).emit('add-text', textData);
     });
 
-    socket.on('call-user', ({ roomId, callerId, callerName }) => {
-      socket.to(roomId).emit('incoming-call', { callerId, callerName, socketId: socket.id });
-    });
-
-    socket.on('call-accepted', ({ roomId, callerId }) => {
-      io.to(roomId).emit('call-accepted', { accepterId: socket.id });
-    });
-
-    socket.on('call-declined', ({ roomId, callerId }) => {
-      socket.to(roomId).emit('call-declined');
-    });
-
     socket.on('video-offer', ({ roomId, offer, userId }) => {
       socket.to(roomId).emit('video-offer', { offer, userId });
     });
